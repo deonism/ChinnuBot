@@ -50,7 +50,7 @@ def gban(bot: Bot, update: Update, args: List[str]):
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("You don't seem to be referring to a user.")
+        message.reply_text("ആരെയാണ് എന്നു പറഞ്ഞില്ല...")
         return
 
     if int(user_id) in SUDO_USERS:
@@ -91,7 +91,7 @@ def gban(bot: Bot, update: Update, args: List[str]):
 
         return
 
-    message.reply_text("*Blows dust off of banhammer* 😉")
+    message.reply_text("ഇപ്പ ശരിയാക്കിത്തരാം... 😉")
 
     banner = update.effective_user  # type: Optional[User]
     send_to_list(bot, SUDO_USERS + SUPPORT_USERS,
@@ -123,8 +123,8 @@ def gban(bot: Bot, update: Update, args: List[str]):
         except TelegramError:
             pass
 
-    send_to_list(bot, SUDO_USERS + SUPPORT_USERS, "gban complete!")
-    message.reply_text("Person has been gbanned.")
+    send_to_list(bot, SUDO_USERS + SUPPORT_USERS, "gban ചെയ്തു!")
+    message.reply_text("ലവന് ഒരു വലിയ ബണ്ണ് കൊടുത്തു വിട്ടിട്ടുണ്ട്!")
 
 
 @run_async
@@ -179,7 +179,7 @@ def ungban(bot: Bot, update: Update, args: List[str]):
 
     sql.ungban_user(user_id)
 
-    send_to_list(bot, SUDO_USERS + SUPPORT_USERS, "un-gban complete!")
+    send_to_list(bot, SUDO_USERS + SUPPORT_USERS, "un-gban ചെയ്തു!")
 
     message.reply_text("Person has been un-gbanned.")
 
