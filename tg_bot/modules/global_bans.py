@@ -124,7 +124,7 @@ def gban(bot: Bot, update: Update, args: List[str]):
             pass
 
     send_to_list(bot, SUDO_USERS + SUPPORT_USERS, "gban ചെയ്തു!")
-    message.reply_text("ലവന് ഒരു വലിയ ബണ്ണ് കൊടുത്തു വിട്ടിട്ടുണ്ട്!")
+    message.reply_text("Go away stupid, in the house of my wife and daughter... You will not see any minute of the today. ഇറങ്ങിപ്പോടാ! 🤪")
 
 
 @run_async
