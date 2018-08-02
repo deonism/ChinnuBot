@@ -59,7 +59,7 @@ def ban(bot: Bot, update: Update, args: List[str]) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("You don't seem to be referring to a user.")
+        message.reply_text("ആരെയാണ് എന്നു പറഞ്ഞില്ല...")
         return ""
 
     try:
@@ -72,11 +72,11 @@ def ban(bot: Bot, update: Update, args: List[str]) -> str:
             raise
 
     if is_user_ban_protected(chat, user_id, member):
-        message.reply_text("I really wish I could ban admins...")
+        message.reply_text("അദ്ദേഹം അഡ്മിൻ ആണ്, ബാൻ ചെയ്യാൻ കഴിയില്ല!")
         return ""
 
     if user_id == bot.id:
-        message.reply_text("I'm not gonna BAN myself, are you crazy?")
+        message.reply_text("അടിപൊളി, ഞാൻ എന്നെത്തന്നെ ബാൻ ചെയ്യണം എന്നാണോ പറയുന്നത്?")
         return ""
 
     log = "<b>{}:</b>" \
@@ -91,7 +91,7 @@ def ban(bot: Bot, update: Update, args: List[str]) -> str:
         chat.kick_member(user_id)
         bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
         keyboard = []
-        reply = "{} ന് ബണ്ണ് കൊടുത്തു വിട്ടിട്ടുണ്ട് !".format(mention_html(member.user.id, member.user.first_name))
+        reply = "{} ന് ബണ്ണ് കൊടുത്തു വിട്ടിട്ടുണ്ട്!".format(mention_html(member.user.id, member.user.first_name))
         message.reply_text(reply, reply_markup=keyboard, parse_mode=ParseMode.HTML)
         return log
 
@@ -135,7 +135,7 @@ def temp_ban(bot: Bot, update: Update, args: List[str]) -> str:
             raise
 
     if is_user_ban_protected(chat, user_id, member):
-        message.reply_text("I really wish I could ban admins...")
+        message.reply_text("അദ്ദേഹം അഡ്മിൻ ആണ്, ബാൻ ചെയ്യാൻ കഴിയില്ല!")
         return ""
 
     if user_id == bot.id:
@@ -171,13 +171,13 @@ def temp_ban(bot: Bot, update: Update, args: List[str]) -> str:
     try:
         chat.kick_member(user_id, until_date=bantime)
         bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
-        message.reply_text("Banned! User will be banned for {}.".format(time_val))
+        message.reply_text("BANNED! User will be banned for {}.".format(time_val))
         return log
 
     except BadRequest as excp:
         if excp.message == "Reply message not found":
             # Do not reply
-            message.reply_text("Banned! User will be banned for {}.".format(time_val), quote=False)
+            message.reply_text("BANNED! User will be banned for {}.".format(time_val), quote=False)
             return log
         else:
             LOGGER.warning(update)
@@ -213,7 +213,7 @@ def kick(bot: Bot, update: Update, args: List[str]) -> str:
             raise
 
     if is_user_ban_protected(chat, user_id):
-        message.reply_text("I really wish I could kick admins...")
+        message.reply_text("അദ്ദേഹം അഡ്മിൻ ആണ്, പുറത്താക്കാൻ കഴിയില്ല!")
         return ""
 
     if user_id == bot.id:
@@ -252,7 +252,7 @@ def kickme(bot: Bot, update: Update):
 
     res = update.effective_chat.unban_member(user_id)  # unban on current user = kick
     if res:
-        update.effective_message.reply_text("No problem.")
+        update.effective_message.reply_text("No problem!")
     else:
         update.effective_message.reply_text("Huh? I can't :/")
 
@@ -290,7 +290,7 @@ def unban(bot: Bot, update: Update, args: List[str]) -> str:
         return ""
 
     chat.unban_member(user_id)
-    message.reply_text("Yep, this user can join!")
+    message.reply_text("ബാൻ മാറ്റിയിട്ടുണ്ട്, ഇയാൾക്ക് join ചെയ്യാം!")
 
     log = "<b>{}:</b>" \
           "\n#UNBANNED" \
