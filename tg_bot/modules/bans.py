@@ -223,7 +223,7 @@ def kick(bot: Bot, update: Update, args: List[str]) -> str:
     res = chat.unban_member(user_id)  # unban on current user = kick
     if res:
         bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
-        message.reply_text("Kicked!")
+        message.reply_text("ലവനെ എടുത്തു വെളിയിൽ കളഞ്ഞിട്ടുണ്ട്!")
         log = "<b>{}:</b>" \
               "\n#KICKED" \
               "\n<b>Admin:</b> {}" \
@@ -247,7 +247,7 @@ def kick(bot: Bot, update: Update, args: List[str]) -> str:
 def kickme(bot: Bot, update: Update):
     user_id = update.effective_message.from_user.id
     if is_user_admin(update.effective_chat, user_id):
-        update.effective_message.reply_text("I wish I could... but you're an admin.")
+        update.effective_message.reply_text("താങ്കൾ അഡ്മിൻ ആണ്, എനിക്ക് താങ്കളെ പുറത്താക്കാൻ കഴിയില്ല!")
         return
 
     res = update.effective_chat.unban_member(user_id)  # unban on current user = kick
