@@ -25,7 +25,7 @@ def mute(bot: Bot, update: Update, args: List[str]) -> str:
 
     user_id = extract_user(message, args)
     if not user_id:
-        message.reply_text("You'll need to either give me a username to mute, or reply to someone to be muted.")
+        message.reply_text("ആരെയാണ് മ്യൂട്ട് ചെയ്യേണ്ടത് എന്നു പറഞ്ഞില്ല...)
         return ""
 
     if user_id == bot.id:
@@ -67,7 +67,7 @@ def unmute(bot: Bot, update: Update, args: List[str]) -> str:
 
     user_id = extract_user(message, args)
     if not user_id:
-        message.reply_text("You'll need to either give me a username to unmute, or reply to someone to be unmuted.")
+        message.reply_text("ആരുടെ മ്യൂട്ട് ആണ് മാറ്റേണ്ടത് എന്നു പറഞ്ഞില്ല...")
         return ""
 
     member = chat.get_member(int(user_id))
@@ -109,7 +109,7 @@ def temp_mute(bot: Bot, update: Update, args: List[str]) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("You don't seem to be referring to a user.")
+        message.reply_text("ആരെയാണ് എന്നു പറഞ്ഞില്ല...")
         return ""
 
     try:
