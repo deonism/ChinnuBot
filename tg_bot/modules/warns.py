@@ -41,11 +41,11 @@ def warn(user: User, chat: Chat, reason: str, message: Message, warner: User = N
         sql.reset_warns(user.id, chat.id)
         if soft_warn:  # kick
             chat.unban_member(user.id)
-            reply = "{} warnings, {} has been kicked!".format(limit, mention_html(user.id, user.first_name))
+            reply = "{} warnings, {} നെ പുറത്താക്കി!".format(limit, mention_html(user.id, user.first_name))
 
         else:  # ban
             chat.kick_member(user.id)
-            reply = "{} warnings, {} has been banned!".format(limit, mention_html(user.id, user.first_name))
+            reply = "{} warnings, {} ന് ബണ്ണ് കൊടുത്തു വിട്ടിട്ടുണ്ട്!".format(limit, mention_html(user.id, user.first_name))
 
         for warn_reason in reasons:
             reply += "\n - {}".format(html.escape(warn_reason))
@@ -66,7 +66,7 @@ def warn(user: User, chat: Chat, reason: str, message: Message, warner: User = N
         keyboard = InlineKeyboardMarkup(
             [[InlineKeyboardButton("Remove warn", callback_data="rm_warn({})".format(user.id))]])
 
-        reply = "{} has {}/{} warnings... watch out!".format(mention_html(user.id, user.first_name), num_warns,
+        reply = "{} has been WARNED! {}/{}".format(mention_html(user.id, user.first_name), num_warns,
                                                              limit)
         if reason:
             reply += "\nReason for last warn:\n{}".format(html.escape(reason))
