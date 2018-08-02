@@ -275,7 +275,7 @@ def welcome(bot: Bot, update: Update, args: List[str]):
     elif len(args) >= 1:
         if args[0].lower() in ("on", "yes"):
             sql.set_welc_preference(str(chat.id), True)
-            update.effective_message.reply_text("ശരി, എല്ലാരേം സ്വാഗതം ചെയ്തേക്കാം!")
+            update.effective_message.reply_text("ശരി, പുതിയ മെംബേഴ്സിനെ സ്വാഗതം ചെയ്യാം!")
 
         elif args[0].lower() in ("off", "no"):
             sql.set_welc_preference(str(chat.id), False)
@@ -418,14 +418,14 @@ def clean_welcome(bot: Bot, update: Update, args: List[str]) -> str:
     if not args:
         clean_pref = sql.get_clean_pref(chat.id)
         if clean_pref:
-            update.effective_message.reply_text("നിലവിൽ പഴയ Welcome മെസ്സേജ് ഒക്കെ ഡിലീറ്റ് ചെയ്യുന്നുണ്ട്.")
+            update.effective_message.reply_text("നിലവിൽ പഴയ welcome മെസ്സേജുകൾ ഡിലീറ്റ് ചെയ്യുന്നുണ്ട്.")
         else:
-            update.effective_message.reply_text("നിലവിൽ പഴയ Welcome ഒന്നും ഡിലീറ്റ് ചെയ്യുന്നില്ല.")
+            update.effective_message.reply_text("നിലവിൽ പഴയ welcome ഒന്നും ഡിലീറ്റ് ചെയ്യുന്നില്ല.")
         return ""
 
     if args[0].lower() in ("on", "yes"):
         sql.set_clean_welcome(str(chat.id), True)
-        update.effective_message.reply_text("ശരി, പഴയ Welcome മെസ്സേജുകൾ ഡിലീറ്റ് ചെയ്യാൻ ശ്രമിക്കാം!")
+        update.effective_message.reply_text("ശരി, പഴയ welcome മെസ്സേജുകൾ ഡിലീറ്റ് ചെയ്യാൻ ശ്രമിക്കാം!")
         return "<b>{}:</b>" \
                "\n#CLEAN_WELCOME" \
                "\n<b>Admin:</b> {}" \
@@ -433,7 +433,7 @@ def clean_welcome(bot: Bot, update: Update, args: List[str]) -> str:
                                                                          mention_html(user.id, user.first_name))
     elif args[0].lower() in ("off", "no"):
         sql.set_clean_welcome(str(chat.id), False)
-        update.effective_message.reply_text("ശരി, പഴയ Welcome മെസ്സേജുകൾ ഒന്നും ഡിലീറ്റ് ചെയ്യില്ല!")
+        update.effective_message.reply_text("ശരി, പഴയ welcome മെസ്സേജുകൾ ഡിലീറ്റ് ചെയ്യില്ല!")
         return "<b>{}:</b>" \
                "\n#CLEAN_WELCOME" \
                "\n<b>Admin:</b> {}" \
