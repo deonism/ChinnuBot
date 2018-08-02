@@ -86,14 +86,14 @@ def del_joined(bot: Bot, update: Update, args: List[str]) -> str:
     if not args:
         del_pref = sql.get_del_pref(chat.id)
         if del_pref:
-            update.effective_message.reply_text("നിലവിൽ `user` joined the chat മെസ്സേജുകൾ ഡിലീറ്റ് ചെയ്യുന്നുണ്ട്.")
+            update.effective_message.reply_text("നിലവിൽ user joined the chat മെസ്സേജുകൾ ഡിലീറ്റ് ചെയ്യുന്നുണ്ട്.")
         else:
             update.effective_message.reply_text("നിലവിൽ പഴയ joined മെസ്സേജുകൾ ഡിലീറ്റ് ചെയ്യുന്നില്ല.")
         return ""
 
     if args[0].lower() in ("on", "yes"):
         sql.set_del_joined(str(chat.id), True)
-        update.effective_message.reply_text("ശരി, joned the chat മെസ്സേജുകൾ ഡിലീറ്റ് ചെയ്യാം!")
+        update.effective_message.reply_text("ശരി, joined the chat മെസ്സേജുകൾ ഡിലീറ്റ് ചെയ്യാം!")
         return "<b>{}:</b>" \
                "\n#CLEAN_SERVICE_MESSAGE" \
                "\n<b>Admin:</b> {}" \
